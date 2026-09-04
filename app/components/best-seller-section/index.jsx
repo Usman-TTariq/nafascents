@@ -4,7 +4,7 @@ const BestSellerSection = () => {
     return (
         <div className="bg-black py-[60px]">
             <div className="container">
-                <div className="grid grid-cols-12 gap-[60px] max-2xl:gap-[10px]">
+                <div className="grid grid-cols-12 gap-[60px] max-2xl:gap-[40px]">
                     <div className="col-span-6 max-lg:col-span-12">
                         <Image className="w-full max-lg:w-[60%] max-lg:mx-auto" src="/images/bestseller.png" alt="best-seller-section" width={1000} height={1000} />
                     </div>

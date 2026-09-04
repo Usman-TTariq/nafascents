@@ -11,7 +11,7 @@ const slides = [
         tester: "/images/tester1.png",
         testerName: "Alpha",
         description: "Bold, magnetic and made to stand out.",
-        productBottom: "-60px",
+        productBottom: "-6svh",
     },
     {
         title: "SIRR AL OUD",
@@ -20,7 +20,7 @@ const slides = [
         tester: "/images/tester2.png",
         testerName: "Velvet Rose",
         description: "Deep oud warmth with a luxurious finish.",
-        productBottom: "-130px",
+        productBottom: "-13svh",
     },
     {
         title: "THE GENTLEMEN",
@@ -29,7 +29,7 @@ const slides = [
         tester: "/images/tester3.png",
         testerName: "Flow Wanted",
         description: "Refined freshness with a confident masculine edge.",
-        productBottom: "-110px",
+        productBottom: "-11svh",
     },
     {
         title: "ALPHA MALE",
@@ -38,7 +38,7 @@ const slides = [
         tester: "/images/tester5.png",
         testerName: "The Gentlemen",
         description: "Fresh, powerful and effortlessly modern all day.",
-        productBottom: "-125px",
+        productBottom: "-12.5svh",
     },
     {
         title: "VELVET ROSE",
@@ -47,7 +47,7 @@ const slides = [
         tester: "/images/tester4.png",
         testerName: "Sirr Al Oud",
         description: "Rich florals wrapped in soft, elegant warmth.",
-        productBottom: "-100px",
+        productBottom: "-10svh",
     }
 ];
 
@@ -141,8 +141,8 @@ const HeroSection = () => {
     }, [activeIndex, started]);
 
     return (
-        <div className="relative h-[110vh] pt-[80px] overflow-hidden bg-black">
-            <div className="absolute bottom-[180px] left-[50%] translate-x-[-50%] flex items-center gap-[30px] z-40">
+        <div className="relative h-svh pt-[clamp(52px,8svh,80px)] overflow-hidden bg-black">
+            <div className="absolute bottom-[clamp(72px,16svh,180px)] left-[50%] translate-x-[-50%] flex items-center gap-[30px] z-40">
                 {slides.map((slide, index) => (
                     <h6
                         key={slide.title}
@@ -152,7 +152,7 @@ const HeroSection = () => {
                     </h6>
                 ))}
             </div>
-            <div className="absolute bottom-[0px] left-[0px] w-full h-[500px] z-30 bg-[linear-gradient(0deg,rgba(0,0,0,1)_0%,rgba(255,255,255,0)_100%)] pointer-events-none"></div>
+            <div className="absolute bottom-[0px] left-[0px] w-full h-[min(500px,46svh)] z-30 bg-[linear-gradient(0deg,rgba(0,0,0,1)_0%,rgba(255,255,255,0)_100%)] pointer-events-none"></div>
             {slides.map((slide, index) => {
                 const isActive = index === activeIndex;
                 const isLeaving = index === prevIndex;
@@ -185,7 +185,7 @@ const HeroSection = () => {
                             style={{ bottom: slide.productBottom }}
                         >
                             <Image
-                                className="w-full"
+                                className="w-full h-auto max-h-[92svh] object-contain object-bottom"
                                 src={slide.product}
                                 alt={slide.title}
                                 width={2000}
@@ -207,12 +207,12 @@ const HeroSection = () => {
                 </h1>
                 <div className="flex items-start justify-between w-full">
                     <div className="relative z-40">
-                        <h6 className="hero-fade-copy text-[20px] font-manropeRegular text-white max-w-[280px]">{activeSlide.description}</h6>
-                        <button className="hero-order-btn hero-fade-btn mt-[20px] cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black border-2 border-white rounded-full px-[20px] py-[10px] font-manropeRegular text-[18px] font-medium">Order Now</button>
+                        <h6 className="hero-fade-copy text-[20px] max-[850px]:text-[16px] font-manropeRegular text-white max-w-[280px]">{activeSlide.description}</h6>
+                        <button className="hero-order-btn hero-fade-btn mt-[20px] max-[850px]:mt-[12px] cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black border-2 border-white rounded-full px-[20px] py-[10px] font-manropeRegular text-[18px] font-medium">Order Now</button>
                     </div>
                     <div className="hero-fade-tester">
-                        <Image src={activeSlide.tester} className="w-[150px]" alt={`${activeSlide.testerName} Tester`} width={1000} height={1000} />
-                        <h6 className="text-[18px] font-manropeRegular text-white text-center">
+                        <Image src={activeSlide.tester} className="w-[150px] max-[850px]:w-[120px]" alt={`${activeSlide.testerName} Tester`} width={1000} height={1000} />
+                        <h6 className="text-[18px] max-[850px]:text-[15px] font-manropeRegular text-white text-center">
                             {activeSlide.testerName}
                             {activeSlide.testerName === "Alpha" ? " " : <br />}
                             <span className="font-semibold">Tester</span>
