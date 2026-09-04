@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-manropeRegular: var(--font-manrope-regular);
+  --font-timesNewRoman: "Times New Roman", Times, serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +24,304 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: 'Times New Roman', Times, serif; */
+}
+
+@keyframes hero-bg-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes hero-bg-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes hero-product-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes hero-product-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes hero-content-blend {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-bg-wait,
+.hero-product-wait {
+  opacity: 0;
+}
+
+.hero-bg-shown,
+.hero-product-shown {
+  opacity: 1;
+}
+
+.hero-bg-enter,
+.hero-bg-leave {
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+
+.hero-bg-enter {
+  z-index: 1;
+  animation-name: hero-bg-fade-in;
+}
+
+.hero-bg-leave {
+  z-index: 0;
+  animation-name: hero-bg-fade-out;
+}
+
+.hero-product-leave {
+  z-index: 22;
+  animation: hero-product-fade-out 0.7s ease-in both;
+}
+
+.hero-product-enter {
+  z-index: 21;
+  animation: hero-product-fade-in 0.75s ease-out both;
+}
+
+.hero-product-enter-follow {
+  z-index: 21;
+  opacity: 0;
+  animation: hero-product-fade-in 0.75s ease-out 0.55s both;
+}
+
+.hero-fade-title,
+.hero-fade-copy,
+.hero-fade-tester,
+.hero-fade-btn {
+  opacity: 0;
+  animation: hero-content-blend 0.8s ease-out both;
+}
+
+.hero-fade-title {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: calc((100vw - 2rem) / var(--title-chars, 10) * 1.5);
+}
+
+@media (min-width: 768px) {
+  .hero-fade-title {
+    font-size: calc((720px - 2rem) / var(--title-chars, 10) * 1.5);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-fade-title {
+    font-size: calc((960px - 2rem) / var(--title-chars, 10) * 1.5);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-fade-title {
+    font-size: calc((1140px - 2rem) / var(--title-chars, 10) * 1.5);
+  }
+}
+
+@media (min-width: 1536px) {
+  .hero-fade-title {
+    font-size: calc((1320px - 2rem) / var(--title-chars, 10) * 1.5);
+  }
+}
+
+.hero-copy-first .hero-fade-title { animation-delay: 0.15s; }
+.hero-copy-first .hero-fade-copy { animation-delay: 0.25s; }
+.hero-copy-first .hero-fade-btn { animation-delay: 0.35s; }
+.hero-copy-first .hero-fade-tester { animation-delay: 0.35s; }
+
+.hero-copy-follow .hero-fade-title { animation-delay: 0.55s; }
+.hero-copy-follow .hero-fade-copy { animation-delay: 0.65s; }
+.hero-copy-follow .hero-fade-btn { animation-delay: 0.75s; }
+.hero-copy-follow .hero-fade-tester { animation-delay: 0.75s; }
+
+.hero-slide-num {
+  font-size: 16px;
+  line-height: 1;
+  color: #fff;
+  opacity: 0.35;
+  transform: scale(1);
+  transform-origin: center;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.hero-slide-num-active {
+  opacity: 1;
+  transform: scale(1.45);
+}
+
+.hero-order-btn {
+  cursor: pointer;
+  transition: box-shadow 0.25s ease;
+}
+
+.hero-order-btn:hover {
+  box-shadow: -4px 8px 16px rgba(0, 0, 0, 0.55);
+}
+
+@keyframes reviews-marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes reviews-marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.reviews-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 20px;
+  will-change: transform;
+}
+
+.reviews-marquee-left {
+  animation: reviews-marquee-left 70s linear infinite;
+}
+
+.reviews-marquee-right {
+  animation: reviews-marquee-right 70s linear infinite;
+}
+
+.fragrance-row {
+  --fragrance-hover-scale: 1.12;
+  --fragrance-near-scale: 1.05;
+  --fragrance-shift: 14px;
+  --fragrance-far-shift: 8px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+}
+
+@media (max-width: 1279px) {
+  .fragrance-row {
+    --fragrance-hover-scale: 1.05;
+    --fragrance-near-scale: 1.02;
+    --fragrance-shift: 4px;
+    --fragrance-far-shift: 2px;
+  }
+}
+
+.fragrance-slot {
+  position: relative;
+}
+
+.fragrance-card {
+  transform-origin: center center;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.fragrance-card button {
+  pointer-events: auto;
+}
+
+.footer-nafa-glow {
+  background: radial-gradient(
+    ellipse 110% 80% at 50% 88%,
+    rgba(120, 62, 24, 1) 0%,
+    rgba(70, 34, 12, 0.55) 34%,
+    rgba(20, 8, 2, 0.18) 58%,
+    rgba(0, 0, 0, 0) 78%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-enter,
+  .hero-bg-leave,
+  .hero-product-enter,
+  .hero-product-enter-follow,
+  .hero-product-leave,
+  .hero-fade-title,
+  .hero-fade-copy,
+  .hero-fade-tester,
+  .hero-fade-btn {
+    animation: none;
+  }
+
+  .hero-slide-num {
+    transition: none;
+  }
+
+  .reviews-marquee-left,
+  .reviews-marquee-right {
+    animation: none;
+  }
+
+  .fragrance-card {
+    transition: none;
+  }
+
+  .hero-bg-enter,
+  .hero-bg-shown,
+  .hero-product-enter,
+  .hero-product-enter-follow,
+  .hero-product-shown,
+  .hero-fade-title,
+  .hero-fade-copy,
+  .hero-fade-tester,
+  .hero-fade-btn {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-bg-leave,
+  .hero-product-leave {
+    opacity: 0;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  container-type: inline-size;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1320px;
+  }
 }
