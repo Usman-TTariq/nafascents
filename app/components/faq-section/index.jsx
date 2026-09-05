@@ -20,19 +20,19 @@ const faqs = [
 
 const FAQSection = () => {
     return (
-        <div className="py-[100px] bg-black relative">
-            <div className="absolute  bg-gradient-to-b from-transparent via-white/[0.11] to-transparent top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full h-[600px]">
+        <div className="py-[100px] max-lg:py-[40px] bg-black relative">
+            <div className="absolute  bg-gradient-to-b from-transparent via-white/[0.11] to-transparent top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full h-[600px] max-lg:h-[280px]">
             </div>
             <div className="container">
-                <div className="pb-[30px] text-center">
+                <div className="pb-[30px] max-lg:pb-[16px] text-center">
                     <span className="text-white border-1 border-[#FBE376] bg-[#f9e2744f] text-[18px] max-xl:text-[16px] font-normal rounded-full px-[20px] py-[8px] max-lg:text-[14px]">FAQ's</span>
                 </div>
-                <h2 className="text-white text-center text-[60px] font-light leading-[70px] max-xl:text-[50px] max-xl:leading-[50px] max-lg:text-[34px]">Frequently Asked <span className="text-[75px] max-xl:text-[50px] max-lg:text-[34px] italic font-timesNewRoman">Questions</span></h2>
-                <div className="grid grid-cols-12 gap-x-[60px] gap-y-[50px] pt-[60px]">
+                <h2 className="text-white text-center text-[60px] font-light leading-[70px] max-xl:text-[50px] max-xl:leading-[50px] max-lg:text-[34px] max-lg:leading-[40px]">Frequently Asked <span className="text-[75px] max-xl:text-[50px] max-lg:text-[34px] italic font-timesNewRoman">Questions</span></h2>
+                <div className="grid grid-cols-12 gap-x-[60px] gap-y-[50px] pt-[60px] max-lg:gap-x-0 max-lg:gap-y-[24px] max-lg:pt-[28px]">
                     {faqs.map((faq) => (
                         <div key={faq.question} className="col-span-6 max-lg:col-span-12">
-                            <h6 className="text-[22px] font-manropeRegular text-white max-lg:text-center">{faq.question}</h6>
-                            <h6 className="text-[15px] font-manropeRegular text-white font-light pt-[12px] max-lg:text-center">{faq.answer}</h6>
+                            <h6 className="text-[22px] max-lg:text-[18px] font-manropeRegular text-white max-lg:text-center">{faq.question}</h6>
+                            <h6 className="text-[15px] font-manropeRegular text-white font-light pt-[12px] max-lg:pt-[8px] max-lg:text-center">{faq.answer}</h6>
                         </div>
                     ))}
                 </div>

@@ -6,26 +6,25 @@ import Search from "./svg/search";
 const Header = () => {
     return (
         <div className="absolute z-10 top-[10px] left-[50%] translate-x-[-50%] w-full container">
-            <div className="flex items-center justify-between">
-                <Logo className="w-[160px] cursor-pointer" />
-                <div className="flex items-center gap-[30px]">
+            <div className="flex items-center justify-between gap-[12px]">
+                <Logo className="w-[160px] max-lg:w-[112px] cursor-pointer shrink-0" />
+                <div className="flex items-center gap-[30px] max-lg:hidden">
                     <h6 className="text-[16px] font-manropeRegular text-white cursor-pointer">Home</h6>
                     <h6 className="text-[16px] font-manropeRegular text-white cursor-pointer">Products</h6>
                     <h6 className="text-[16px] font-manropeRegular text-white cursor-pointer">Contact</h6>
                 </div>
-                <div className="flex items-center gap-[10px]">
+                <div className="flex items-center gap-[10px] max-lg:gap-[6px] shrink-0">
                     <div className="flex items-center justify-center px-[10px] py-[5px] bg-[#ffffff4a] rounded-full cursor-pointer">
                         <Search className="w-[15px]" />
                     </div>
                     <div className="flex items-center justify-center px-[10px] py-[7px] bg-[#ffffff4a] rounded-full cursor-pointer">
                         <Profile className="w-[16px]" />
                     </div>
-                    <div className="flex items-center gap-[8px] px-[22px] py-[7px] bg-[#ffffff4a] rounded-full cursor-pointer">
+                    <div className="flex items-center gap-[8px] px-[22px] py-[7px] max-lg:px-[10px] bg-[#ffffff4a] rounded-full cursor-pointer">
                         <Cart className="w-[15px]" />
-                        <h6 className="text-[16px] font-medium font-manropeRegular text-white">Cart</h6>
+                        <h6 className="text-[16px] font-medium font-manropeRegular text-white max-lg:hidden">Cart</h6>
                     </div>
                 </div>
-
             </div>
         </div>
     )

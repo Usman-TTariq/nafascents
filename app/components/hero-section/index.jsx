@@ -141,8 +141,8 @@ const HeroSection = () => {
     }, [activeIndex, started]);
 
     return (
-        <div className="relative h-svh pt-[clamp(52px,8svh,80px)] overflow-hidden bg-black">
-            <div className="absolute bottom-[clamp(72px,16svh,180px)] left-[50%] translate-x-[-50%] flex items-center gap-[30px] z-40">
+        <div className="relative h-svh max-lg:h-auto pt-[clamp(52px,8svh,80px)] max-lg:pt-[72px] overflow-hidden bg-black max-lg:flex max-lg:flex-col">
+            <div className="absolute bottom-[clamp(72px,16svh,180px)] max-lg:relative max-lg:bottom-auto max-lg:left-auto max-lg:translate-x-0 max-lg:order-3 max-lg:mx-auto max-lg:pb-[16px] max-lg:pt-[4px] left-[50%] translate-x-[-50%] flex items-center gap-[30px] max-lg:gap-[16px] z-40">
                 {slides.map((slide, index) => (
                     <h6
                         key={slide.title}
@@ -152,40 +152,59 @@ const HeroSection = () => {
                     </h6>
                 ))}
             </div>
-            <div className="absolute bottom-[0px] left-[0px] w-full h-[min(500px,46svh)] z-30 bg-[linear-gradient(0deg,rgba(0,0,0,1)_0%,rgba(255,255,255,0)_100%)] pointer-events-none"></div>
+            <div className="absolute bottom-[0px] left-[0px] w-full h-[min(500px,46svh)] max-lg:h-[140px] z-30 bg-[linear-gradient(0deg,rgba(0,0,0,1)_0%,rgba(255,255,255,0)_100%)] pointer-events-none"></div>
             {slides.map((slide, index) => {
                 const isActive = index === activeIndex;
                 const isLeaving = index === prevIndex;
                 if (!isActive && !isLeaving) return null;
 
                 const bgPhase = isLeaving ? "leave" : !started ? "wait" : settled && isActive ? "shown" : "enter";
-                const productPhase = isLeaving
-                    ? "leave"
-                    : !started
-                        ? "wait"
-                        : settled && isActive
-                            ? "shown"
-                            : isSwap
-                                ? "enter-follow"
-                                : "enter";
 
                 return (
-                    <div key={slide.title} className="contents">
-                        <Image
-                            className={`absolute top-[0px] left-[0px] w-full h-full object-cover pointer-events-none hero-bg-${bgPhase}`}
-                            src={slide.background}
-                            alt={`${slide.title} background`}
-                            width={1000}
-                            height={1000}
-                            preload={index === 0}
-                            loading={index === 0 ? "eager" : "lazy"}
-                        />
+                    <Image
+                        key={`${slide.title}-bg`}
+                        className={`absolute top-[0px] left-[0px] w-full h-full object-cover pointer-events-none hero-bg-${bgPhase}`}
+                        src={slide.background}
+                        alt={`${slide.title} background`}
+                        width={1000}
+                        height={1000}
+                        preload={index === 0}
+                        loading={index === 0 ? "eager" : "lazy"}
+                    />
+                );
+            })}
+            <div className="contents max-lg:relative max-lg:block max-lg:order-2 max-lg:w-full">
+                <Image
+                    className="hidden max-lg:block w-full h-auto opacity-0 pointer-events-none"
+                    src={activeSlide.product}
+                    alt=""
+                    width={2000}
+                    height={2000}
+                    aria-hidden
+                />
+                {slides.map((slide, index) => {
+                    const isActive = index === activeIndex;
+                    const isLeaving = index === prevIndex;
+                    if (!isActive && !isLeaving) return null;
+
+                    const productPhase = isLeaving
+                        ? "leave"
+                        : !started
+                            ? "wait"
+                            : settled && isActive
+                                ? "shown"
+                                : isSwap
+                                    ? "enter-follow"
+                                    : "enter";
+
+                    return (
                         <div
-                            className={`absolute left-0 w-full z-20 pointer-events-none hero-product-${productPhase}`}
+                            key={`${slide.title}-product`}
+                            className={`absolute left-0 w-full z-20 pointer-events-none hero-product-${productPhase} max-lg:!bottom-0 max-lg:!top-0`}
                             style={{ bottom: slide.productBottom }}
                         >
                             <Image
-                                className="w-full h-auto max-h-[92svh] object-contain object-bottom"
+                                className="w-full h-auto max-h-[92svh] max-lg:max-h-none max-lg:h-full object-contain object-bottom"
                                 src={slide.product}
                                 alt={slide.title}
                                 width={2000}
@@ -194,10 +213,10 @@ const HeroSection = () => {
                                 loading={index === 0 ? "eager" : "lazy"}
                             />
                         </div>
-                    </div>
-                );
-            })}
-            <div key={activeIndex} className={`container relative z-10 ${isSwap ? "hero-copy-follow" : "hero-copy-first"}`}>
+                    );
+                })}
+            </div>
+            <div key={activeIndex} className={`container relative z-10 max-lg:order-1 ${isSwap ? "hero-copy-follow" : "hero-copy-first"}`}>
                 <h1
                     ref={titleRef}
                     className="hero-fade-title font-manropeRegular text-white"
@@ -207,12 +226,12 @@ const HeroSection = () => {
                 </h1>
                 <div className="flex items-start justify-between w-full">
                     <div className="relative z-40">
-                        <h6 className="hero-fade-copy text-[20px] max-[850px]:text-[16px] font-manropeRegular text-white max-w-[280px]">{activeSlide.description}</h6>
-                        <button className="hero-order-btn hero-fade-btn mt-[20px] max-[850px]:mt-[12px] cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black border-2 border-white rounded-full px-[20px] py-[10px] font-manropeRegular text-[18px] font-medium">Order Now</button>
+                        <h6 className="hero-fade-copy text-[20px] max-lg:text-[15px] font-manropeRegular text-white max-w-[280px] max-lg:max-w-[190px]">{activeSlide.description}</h6>
+                        <button className="hero-order-btn hero-fade-btn mt-[20px] max-lg:mt-[12px] cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-lg:px-[16px] max-lg:py-[8px] font-manropeRegular text-[18px] max-lg:text-[15px] font-medium">Order Now</button>
                     </div>
                     <div className="hero-fade-tester">
-                        <Image src={activeSlide.tester} className="w-[150px] max-[850px]:w-[120px]" alt={`${activeSlide.testerName} Tester`} width={1000} height={1000} />
-                        <h6 className="text-[18px] max-[850px]:text-[15px] font-manropeRegular text-white text-center">
+                        <Image src={activeSlide.tester} className="w-[150px] max-lg:w-[88px]" alt={`${activeSlide.testerName} Tester`} width={1000} height={1000} />
+                        <h6 className="text-[18px] max-lg:text-[13px] font-manropeRegular text-white text-center">
                             {activeSlide.testerName}
                             {activeSlide.testerName === "Alpha" ? " " : <br />}
                             <span className="font-semibold">Tester</span>

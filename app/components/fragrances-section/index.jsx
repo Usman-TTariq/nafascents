@@ -47,15 +47,15 @@ const FragrancesSection = () => {
     const [hovered, setHovered] = useState(null);
 
     return (
-        <div className=" py-[80px] bg-black relative">
-            <div className="absolute  bg-gradient-to-b from-transparent via-white/[0.11] to-transparent top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full h-[550px]">
+        <div className=" py-[80px] max-lg:py-[40px] bg-black relative">
+            <div className="absolute  bg-gradient-to-b from-transparent via-white/[0.11] to-transparent top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-full h-[550px] max-lg:h-[320px]">
             </div>
-            <div className="pb-[30px] text-center">
+            <div className="pb-[30px] max-lg:pb-[16px] text-center">
                 <span className="text-white border-1 border-[#FBE376] bg-[#f9e2744f] text-[18px] max-xl:text-[16px] max-lg:text-[14px] font-normal rounded-full px-[20px] py-[8px]">Fragrances</span>
             </div>
-            <h2 className="text-white text-center text-[60px] font-light leading-[70px] max-xl:text-[50px] max-xl:leading-[50px] max-lg:text-[34px]">Discover Your <span className="text-[75px] max-xl:text-[50px] max-lg:text-[34px] italic font-timesNewRoman">Signature</span> Scent</h2>
+            <h2 className="text-white text-center text-[60px] font-light leading-[70px] max-xl:text-[50px] max-xl:leading-[50px] max-lg:text-[34px] max-lg:leading-[40px] max-lg:px-4">Discover Your <span className="text-[75px] max-xl:text-[50px] max-lg:text-[34px] italic font-timesNewRoman">Signature</span> Scent</h2>
             <div
-                className="fragrance-row gap-[36px] max-xl:gap-[16px] pt-[70px] max-xl:pt-[48px] px-[60px] max-xl:px-[28px]"
+                className="fragrance-row gap-[36px] max-xl:gap-[16px] max-lg:gap-[20px] pt-[70px] max-xl:pt-[48px] max-lg:pt-[28px] px-[60px] max-xl:px-[28px] max-lg:px-5"
                 onMouseLeave={() => setHovered(null)}
             >
                 {fragrances.map((fragrance, index) => (
@@ -66,7 +66,7 @@ const FragrancesSection = () => {
                         onMouseEnter={() => setHovered(index)}
                     >
                     <div
-                        className="fragrance-card relative p-[14px] max-xl:p-[10px]"
+                        className="fragrance-card relative p-[14px] max-xl:p-[10px] max-lg:p-[8px]"
                         style={{ transform: cardTransform(index, hovered) }}
                     >
                         <Image className="absolute top-0 left-0 w-full h-full" src={fragrance.background} alt={fragrance.name} width={1000} height={1000} />
@@ -98,7 +98,7 @@ const FragrancesSection = () => {
                             </div>
                         </div>
                         <div>
-                            <button className="w-full hero-order-btn hero-fade-btn cursor-pointer bg-[#fff] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-xl:px-[12px] max-xl:py-[8px] font-manropeRegular text-[18px] max-xl:text-[14px] font-medium">Order Now</button>
+                            <button className="w-full hero-order-btn hero-fade-btn cursor-pointer bg-[#fff] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-xl:px-[12px] max-xl:py-[8px] max-lg:px-[10px] max-lg:py-[7px] font-manropeRegular text-[18px] max-xl:text-[14px] max-lg:text-[13px] font-medium">Order Now</button>
                         </div>
                     </div>
                     </div>

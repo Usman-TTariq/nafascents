@@ -11,7 +11,7 @@ const reviews = [
     },
     {
         text: "Perfume ki fragrance bohat achi aur classy hai. Everyday wear ke liye perfect lagti hai.",
-        name: "Wahid Khan",
+        name: "Saad Ahmed",
     },
     {
         text: "I really loved this scent. It feels balanced, warm, and unique compared to other perfumes I have tried.",
@@ -28,10 +28,10 @@ const reviews = [
 ];
 
 const ReviewCard = ({ text, name }) => (
-    <div className="bg-[#ffffff12] rounded-2xl p-[30px] w-[400px] min-h-[180px] shrink-0 flex flex-col">
-        <h6 className="text-[16px] font-manropeRegular text-white font-light">{text}</h6>
-        <div className="flex items-center justify-between mt-auto pt-[30px]">
-            <h6 className="text-[20px] font-manropeRegular text-white">{name}</h6>
+    <div className="bg-[#ffffff12] rounded-2xl p-[30px] max-lg:p-[18px] w-[400px] max-lg:w-[280px] min-h-[180px] max-lg:min-h-[150px] shrink-0 flex flex-col">
+        <h6 className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">{text}</h6>
+        <div className="flex items-center justify-between mt-auto pt-[30px] max-lg:pt-[18px]">
+            <h6 className="text-[20px] max-lg:text-[16px] font-manropeRegular text-white">{name}</h6>
             <Quotation className="w-[16px]" />
         </div>
     </div>
@@ -44,25 +44,25 @@ const ReviewsSection = () => {
     const loopRowTwo = [...rowTwo, ...rowTwo, ...rowTwo, ...rowTwo];
 
     return (
-        <div className="bg-black py-[100px]">
+        <div className="bg-black py-[100px] max-lg:py-[40px]">
             <div className="container">
-                <div className="grid grid-cols-12 gap-[0px]">
+                <div className="grid grid-cols-12 gap-[0px] max-lg:gap-[12px]">
                     <div className="col-span-6 max-lg:col-span-12">
-                        <div className="pb-[20px] text-right hidden max-lg:block max-lg:text-center">
-                            <span className="text-white border-1 border-[#FBE376] bg-[#f9e2744f] text-[18px] max-xl:text-[16px] font-normal rounded-full px-[20px] py-[8px]">Reviews</span>
+                        <div className="pb-[20px] max-lg:pb-[12px] text-right hidden max-lg:block max-lg:text-center">
+                            <span className="text-white border-1 border-[#FBE376] bg-[#f9e2744f] text-[18px] max-xl:text-[16px] max-lg:text-[14px] font-normal rounded-full px-[20px] py-[8px]">Reviews</span>
                         </div>
-                        <h2 className="text-white text-[65px] max-2xl:text-[55px] max-xl:text-[45px] max-xl:leading-[60px] max-lg:text-[34px] font-light leading-[90px] max-lg:text-center">Loved by Fragrance <span className="text-[75px] max-xl:text-[50px] max-lg:text-[34px] italic font-timesNewRoman">Enthusiasts</span></h2>
+                        <h2 className="text-white text-[65px] max-2xl:text-[55px] max-xl:text-[45px] max-xl:leading-[60px] max-lg:text-[34px] max-lg:leading-[40px] font-light leading-[90px] max-lg:text-center">Loved by Fragrance <span className="text-[75px] max-xl:text-[50px] max-lg:text-[34px] italic font-timesNewRoman">Enthusiasts</span></h2>
                     </div>
                     <div className="col-span-6 my-auto max-lg:col-span-12">
                         <div className="pb-[20px] text-right max-lg:hidden">
                             <span className="text-white border-1 border-[#FBE376] bg-[#f9e2744f] text-[18px] max-xl:text-[16px] font-normal rounded-full px-[20px] py-[8px]">Reviews</span>
                         </div>
-                        <h6 className="text-[18px] font-manropeRegular text-white text-right font-light py-[12px] max-lg:text-center">Every drop of Vella perfume is carefully crafted to embody <br className="max-xl:hidden" /> sophistication, balance, and timeless beauty.</h6>
+                        <h6 className="text-[18px] max-lg:text-[15px] font-manropeRegular text-white text-right font-light py-[12px] max-lg:py-[0px] max-lg:text-center">Every drop of Vella perfume is carefully crafted to embody <br className="max-xl:hidden" /> sophistication, balance, and timeless beauty.</h6>
                     </div>
                 </div>
-                <div className="relative overflow-hidden pt-[30px]">
-                    <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[140px] bg-[linear-gradient(90deg,#000_0%,rgba(0,0,0,0)_100%)]"></div>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[140px] bg-[linear-gradient(270deg,#000_0%,rgba(0,0,0,0)_100%)]"></div>
+                <div className="relative overflow-hidden pt-[30px] max-lg:pt-[20px]">
+                    <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[140px] max-lg:w-[48px] bg-[linear-gradient(90deg,#000_0%,rgba(0,0,0,0)_100%)]"></div>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[140px] max-lg:w-[48px] bg-[linear-gradient(270deg,#000_0%,rgba(0,0,0,0)_100%)]"></div>
                     <div className="overflow-hidden pb-[20px]">
                         <div className="reviews-marquee-track reviews-marquee-left">
                             {loopRowOne.map((review, index) => (
