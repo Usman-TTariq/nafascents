@@ -111,7 +111,7 @@ body {
     min-height: 224px;
   }
 
-  .hero-fade-title {
+  .hero-copy .hero-fade-title {
     height: 56px;
     line-height: 1;
     display: flex;
@@ -187,9 +187,24 @@ body {
   font-size: calc((100vw - 2rem) / var(--title-chars, 10) * 1.5);
 }
 
+.product-page-title {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  line-height: 1;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: calc((100vw - 2rem) / var(--title-chars, 8) * 1.15);
+}
+
 @media (min-width: 1024px) {
   .hero-fade-title {
     font-size: calc((960px - 2rem) / var(--title-chars, 10) * 1.5);
+  }
+
+  .product-page-title {
+    font-size: calc((960px - 2rem) / var(--title-chars, 8) * 1.15);
   }
 }
 
@@ -197,11 +212,19 @@ body {
   .hero-fade-title {
     font-size: calc((1140px - 2rem) / var(--title-chars, 10) * 1.5);
   }
+
+  .product-page-title {
+    font-size: calc((1140px - 2rem) / var(--title-chars, 8) * 1.15);
+  }
 }
 
 @media (min-width: 1536px) {
   .hero-fade-title {
     font-size: calc((1320px - 2rem) / var(--title-chars, 10) * 1.5);
+  }
+
+  .product-page-title {
+    font-size: calc((1320px - 2rem) / var(--title-chars, 8) * 1.15);
   }
 }
 

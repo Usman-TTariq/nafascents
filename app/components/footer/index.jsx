@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
     return (
@@ -8,8 +9,8 @@ const Footer = () => {
                     <div className="col-span-9 max-lg:col-span-12">
                         <h6 className="text-[24px] max-lg:text-[18px] font-manropeRegular text-white max-lg:text-center">Important Links</h6>
                         <div className="flex items-center flex-wrap gap-[40px] max-xl:gap-[20px] max-lg:gap-x-[16px] max-lg:gap-y-[10px] pt-[20px] max-lg:pt-[12px] max-lg:justify-center">
-                            <h6 className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Home</h6>
-                            <h6 className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Products</h6>
+                            <Link href="/" className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Home</Link>
+                            <Link href="/products" className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Products</Link>
                             <h6 className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Profile</h6>
                             <h6 className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Cart</h6>
                             <h6 className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Contact</h6>

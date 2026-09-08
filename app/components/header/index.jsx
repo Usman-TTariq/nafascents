@@ -2,6 +2,7 @@ import Logo from "./svg/logo";
 import Cart from "./svg/cart";
 import Profile from "./svg/profile";
 import Search from "./svg/search";
+import Link from "next/link";
 
 const Header = () => {
     return (
@@ -9,8 +10,8 @@ const Header = () => {
             <div className="flex items-center justify-between gap-[12px]">
                 <Logo className="w-[160px] max-lg:w-[112px] cursor-pointer shrink-0" />
                 <div className="flex items-center gap-[30px] max-lg:hidden">
-                    <h6 className="text-[16px] font-manropeRegular text-white cursor-pointer">Home</h6>
-                    <h6 className="text-[16px] font-manropeRegular text-white cursor-pointer">Products</h6>
+                    <Link href="/" className="text-[16px] font-manropeRegular text-white cursor-pointer">Home</Link>
+                    <Link href="/products" className="text-[16px] font-manropeRegular text-white cursor-pointer">Products</Link>
                     <h6 className="text-[16px] font-manropeRegular text-white cursor-pointer">Contact</h6>
                 </div>
                 <div className="flex items-center gap-[10px] max-lg:gap-[6px] shrink-0">
