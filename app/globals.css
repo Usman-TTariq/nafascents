@@ -108,7 +108,7 @@ body {
 
 @media (max-width: 1023px) {
   .hero-copy {
-    min-height: 214px;
+    min-height: 224px;
   }
 
   .hero-fade-title {
@@ -119,7 +119,7 @@ body {
   }
 
   .hero-copy-row {
-    min-height: 148px;
+    min-height: 158px;
   }
 
   .hero-fade-copy {
@@ -151,6 +151,11 @@ body {
     margin-left: -21%;
     object-fit: contain;
     object-position: center bottom;
+  }
+
+  .hero-product-stage .hero-product-img-flow {
+    width: 154%;
+    margin-left: -27%;
   }
 
   .hero-product-leave {

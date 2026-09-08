@@ -208,7 +208,7 @@ const HeroSection = () => {
                             style={{ bottom: slide.productBottom }}
                         >
                             <Image
-                                className="hero-product-img w-full h-auto max-h-[92svh] object-contain object-bottom"
+                                className={`hero-product-img w-full h-auto max-h-[92svh] object-contain object-bottom${slide.title === "FLOW WANTED" ? " hero-product-img-flow" : ""}`}
                                 src={slide.product}
                                 alt={slide.title}
                                 width={2000}
@@ -220,7 +220,7 @@ const HeroSection = () => {
                     );
                 })}
             </div>
-            <div key={activeIndex} className={`hero-copy container relative z-10 max-lg:order-1 ${isSwap ? "hero-copy-follow" : "hero-copy-first"}`}>
+            <div key={activeIndex} className={`hero-copy container relative z-10 max-lg:order-1 max-lg:pt-[20px] ${isSwap ? "hero-copy-follow" : "hero-copy-first"}`}>
                 <h1
                     ref={titleRef}
                     className="hero-fade-title font-manropeRegular text-white"
@@ -228,7 +228,7 @@ const HeroSection = () => {
                 >
                     {activeSlide.title}
                 </h1>
-                <div className="hero-copy-row flex items-start justify-between w-full">
+                <div className="hero-copy-row flex items-start justify-between w-full max-lg:pt-[20px]">
                     <div className="relative z-40">
                         <h6 className="hero-fade-copy text-[20px] max-lg:text-[15px] font-manropeRegular text-white max-w-[280px] max-lg:max-w-[190px]">{activeSlide.description}</h6>
                         <button className="hero-order-btn hero-fade-btn mt-[20px] max-lg:mt-[12px] cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-lg:px-[16px] max-lg:py-[8px] font-manropeRegular text-[18px] max-lg:text-[15px] font-medium">Order Now</button>
