@@ -106,6 +106,64 @@ body {
   animation: hero-product-fade-in 0.75s ease-out 0.55s both;
 }
 
+@media (max-width: 1023px) {
+  .hero-copy {
+    min-height: 214px;
+  }
+
+  .hero-fade-title {
+    height: 56px;
+    line-height: 1;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .hero-copy-row {
+    min-height: 148px;
+  }
+
+  .hero-fade-copy {
+    min-height: 4.5em;
+  }
+
+  .hero-product-stage {
+    display: block;
+    position: relative;
+    order: 2;
+    width: 100%;
+    aspect-ratio: 1.42 / 1;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .hero-product-stage .hero-product-layer {
+    top: 0 !important;
+    right: 0;
+    bottom: 0 !important;
+    left: 0;
+  }
+
+  .hero-product-stage .hero-product-img {
+    width: 142%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin-left: -21%;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  .hero-product-leave {
+    animation: hero-product-fade-out 0.85s ease-in-out both;
+  }
+
+  .hero-product-enter,
+  .hero-product-enter-follow {
+    opacity: 0;
+    animation: hero-product-fade-in 0.85s ease-in-out both;
+  }
+}
+
 .hero-fade-title,
 .hero-fade-copy,
 .hero-fade-tester,
@@ -228,11 +286,33 @@ body {
 
 @media (max-width: 1023px) {
   .fragrance-row {
-    grid-template-columns: 1fr;
+    display: flex;
+    align-items: stretch;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     --fragrance-hover-scale: 1;
     --fragrance-near-scale: 1;
     --fragrance-shift: 0px;
     --fragrance-far-shift: 0px;
+  }
+
+  .fragrance-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .fragrance-row .fragrance-slot {
+    flex: 0 0 80%;
+    max-width: 340px;
+    scroll-snap-align: center;
+  }
+
+  .fragrance-row .fragrance-card {
+    pointer-events: auto;
+    transform: none !important;
   }
 }
 

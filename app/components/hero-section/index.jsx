@@ -146,7 +146,7 @@ const HeroSection = () => {
                 {slides.map((slide, index) => (
                     <h6
                         key={slide.title}
-                        className={`hero-slide-num font-manropeRegular cursor-pointer ${index === activeIndex ? "hero-slide-num-active" : ""}`}
+                        className={`hero-slide-num font-manropeRegular cursor-pointer max-sm:!text-[13px] ${index === activeIndex ? "hero-slide-num-active" : ""}`}
                     >
                         {String(index + 1).padStart(2, "0")}
                     </h6>
@@ -173,15 +173,19 @@ const HeroSection = () => {
                     />
                 );
             })}
-            <div className="contents max-lg:relative max-lg:block max-lg:order-2 max-lg:w-full">
-                <Image
-                    className="hidden max-lg:block w-full h-auto opacity-0 pointer-events-none"
-                    src={activeSlide.product}
-                    alt=""
-                    width={2000}
-                    height={2000}
-                    aria-hidden
-                />
+            <div className="hidden" aria-hidden>
+                {slides.map((slide) => (
+                    <Image
+                        key={`${slide.title}-preload`}
+                        src={slide.product}
+                        alt=""
+                        width={2000}
+                        height={2000}
+                        preload
+                    />
+                ))}
+            </div>
+            <div className="contents hero-product-stage">
                 {slides.map((slide, index) => {
                     const isActive = index === activeIndex;
                     const isLeaving = index === prevIndex;
@@ -200,23 +204,23 @@ const HeroSection = () => {
                     return (
                         <div
                             key={`${slide.title}-product`}
-                            className={`absolute left-0 w-full z-20 pointer-events-none hero-product-${productPhase} max-lg:!bottom-0 max-lg:!top-0`}
+                            className={`hero-product-layer absolute left-0 w-full z-20 pointer-events-none hero-product-${productPhase}`}
                             style={{ bottom: slide.productBottom }}
                         >
                             <Image
-                                className="w-full h-auto max-h-[92svh] max-lg:max-h-none max-lg:h-full object-contain object-bottom"
+                                className="hero-product-img w-full h-auto max-h-[92svh] object-contain object-bottom"
                                 src={slide.product}
                                 alt={slide.title}
                                 width={2000}
                                 height={2000}
                                 preload={index === 0}
-                                loading={index === 0 ? "eager" : "lazy"}
+                                loading="eager"
                             />
                         </div>
                     );
                 })}
             </div>
-            <div key={activeIndex} className={`container relative z-10 max-lg:order-1 ${isSwap ? "hero-copy-follow" : "hero-copy-first"}`}>
+            <div key={activeIndex} className={`hero-copy container relative z-10 max-lg:order-1 ${isSwap ? "hero-copy-follow" : "hero-copy-first"}`}>
                 <h1
                     ref={titleRef}
                     className="hero-fade-title font-manropeRegular text-white"
@@ -224,7 +228,7 @@ const HeroSection = () => {
                 >
                     {activeSlide.title}
                 </h1>
-                <div className="flex items-start justify-between w-full">
+                <div className="hero-copy-row flex items-start justify-between w-full">
                     <div className="relative z-40">
                         <h6 className="hero-fade-copy text-[20px] max-lg:text-[15px] font-manropeRegular text-white max-w-[280px] max-lg:max-w-[190px]">{activeSlide.description}</h6>
                         <button className="hero-order-btn hero-fade-btn mt-[20px] max-lg:mt-[12px] cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-lg:px-[16px] max-lg:py-[8px] font-manropeRegular text-[18px] max-lg:text-[15px] font-medium">Order Now</button>
@@ -233,7 +237,7 @@ const HeroSection = () => {
                         <Image src={activeSlide.tester} className="w-[150px] max-lg:w-[88px]" alt={`${activeSlide.testerName} Tester`} width={1000} height={1000} />
                         <h6 className="text-[18px] max-lg:text-[13px] font-manropeRegular text-white text-center">
                             {activeSlide.testerName}
-                            {activeSlide.testerName === "Alpha" ? " " : <br />}
+                            <br />
                             <span className="font-semibold">Tester</span>
                         </h6>
                     </div>
