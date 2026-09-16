@@ -1,45 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
 import Star from "../fragrances-section/svg/star";
-
-const products = [
-    {
-        name: "Velvet Rose",
-        background: "/images/scentgradient1.png",
-        product: "/images/velvetrosebottle.png",
-    },
-    {
-        name: "Sirr Al Oud",
-        background: "/images/scentgradient2.png",
-        product: "/images/sirraloudbottle.png",
-    },
-    {
-        name: "Alpha Male",
-        background: "/images/scentgradient3.png",
-        product: "/images/alphabottle.png",
-        bestSeller: true,
-    },
-    {
-        name: "Flow Wanted",
-        background: "/images/scentgradient4.png",
-        product: "/images/flowwantedbottle.png",
-        bestSeller: true,
-    },
-    {
-        name: "The Gentlemen",
-        background: "/images/scentgradient5.png",
-        product: "/images/thegentlemenbottle.png",
-    },
-];
+import { products } from "../../data/products.js";
 
 const ProductPageListSection = () => {
     return (
         <div className="bg-black pt-[90px] max-sm:pt-[20px] pb-[40px]">
             <div className="grid grid-cols-5 max-xl:grid-cols-3 max-lg:grid-cols-2 gap-[36px] max-xl:gap-[16px] max-lg:gap-[16px] px-[60px] max-xl:px-[28px] max-lg:px-5">
                 {products.map((product) => (
-                    <div key={product.name} className="relative p-[14px] max-xl:p-[10px] max-lg:p-[8px]">
-                        <Image className="absolute top-0 left-0 w-full h-full" src={product.background} alt={product.name} width={1000} height={1000} />
+                    <div key={product.slug} className="relative p-[14px] max-xl:p-[10px] max-lg:p-[8px]">
+                        <Image className="absolute top-0 left-0 w-full h-full pointer-events-none" src={product.cardBackground} alt={product.name} width={1000} height={1000} />
                         <div className="relative">
-                            <Image className="w-full h-full" src={product.product} alt={product.name} width={3000} height={3000} />
+                            <Image className="w-full h-full" src={product.cardImage} alt={product.name} width={3000} height={3000} />
                             <div className="absolute z-10 top-[10px] left-[10px] flex flex-col items-start gap-[6px]">
                                 {product.bestSeller && (
                                     <div className="px-[12px] py-[5px] bg-[#6b5c2ecc] rounded-full">
@@ -61,11 +33,16 @@ const ProductPageListSection = () => {
                                 </div>
                             </div>
                             <div>
-                                <h6 className="text-[18px] max-xl:text-[15px] font-manropeRegular text-white font-normal text-right">2500 PKR</h6>
-                                <h6 className="text-[15px] max-xl:text-[13px] font-manropeRegular text-[#c7c7c7] font-normal text-right"><s>3000 PKR</s></h6>
+                                <h6 className="text-[18px] max-xl:text-[15px] font-manropeRegular text-white font-normal text-right">{product.price} PKR</h6>
+                                <h6 className="text-[15px] max-xl:text-[13px] font-manropeRegular text-[#c7c7c7] font-normal text-right"><s>{product.compareAtPrice} PKR</s></h6>
                             </div>
                         </div>
-                        <button className="relative z-10 w-full cursor-pointer bg-[#fff] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-xl:px-[12px] max-xl:py-[8px] max-lg:px-[10px] max-lg:py-[7px] font-manropeRegular text-[18px] max-xl:text-[14px] max-lg:text-[13px] font-medium">Order Now</button>
+                        <Link
+                            href={`/product/${product.slug}`}
+                            className="relative z-10 block w-full text-center cursor-pointer bg-[#fff] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-xl:px-[12px] max-xl:py-[8px] max-lg:px-[10px] max-lg:py-[7px] font-manropeRegular text-[18px] max-xl:text-[14px] max-lg:text-[13px] font-medium"
+                        >
+                            Order Now
+                        </Link>
                     </div>
                 ))}
             </div>

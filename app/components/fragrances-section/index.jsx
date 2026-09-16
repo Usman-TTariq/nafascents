@@ -1,37 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import Star from "./svg/star";
+import { products } from "../../data/products.js";
 
 const fragrances = [
-    {
-        name: "Velvet Rose",
-        background: "/images/scentgradient1.png",
-        product: "/images/velvetrosebottle.png",
-    },
-    {
-        name: "Sirr Al Oud",
-        background: "/images/scentgradient2.png",
-        product: "/images/sirraloudbottle.png",
-    },
-    {
-        name: "Alpha Male",
-        background: "/images/scentgradient3.png",
-        product: "/images/alphabottle.png",
-        bestSeller: true,
-    },
-    {
-        name: "Flow Wanted",
-        background: "/images/scentgradient4.png",
-        product: "/images/flowwantedbottle.png",
-        bestSeller: true,
-    },
-    {
-        name: "The Gentlemen",
-        background: "/images/scentgradient5.png",
-        product: "/images/thegentlemenbottle.png",
-    },
+    products.find((p) => p.slug === "velvet-rose"),
+    products.find((p) => p.slug === "sirr-al-oud"),
+    products.find((p) => p.slug === "alpha-male"),
+    products.find((p) => p.slug === "flow-wanted"),
+    products.find((p) => p.slug === "the-gentlemen"),
 ];
 
 const cardTransform = (index, hovered) => {
@@ -60,7 +40,7 @@ const FragrancesSection = () => {
             >
                 {fragrances.map((fragrance, index) => (
                     <div
-                        key={fragrance.name}
+                        key={fragrance.slug}
                         className="fragrance-slot"
                         style={{ zIndex: hovered === index ? 3 : hovered !== null && Math.abs(index - hovered) === 1 ? 2 : 1 }}
                         onMouseEnter={() => setHovered(index)}
@@ -69,9 +49,9 @@ const FragrancesSection = () => {
                         className="fragrance-card relative p-[14px] max-xl:p-[10px] max-lg:p-[8px]"
                         style={{ transform: cardTransform(index, hovered) }}
                     >
-                        <Image className="absolute top-0 left-0 w-full h-full" src={fragrance.background} alt={fragrance.name} width={1000} height={1000} />
+                        <Image className="absolute top-0 left-0 w-full h-full pointer-events-none" src={fragrance.cardBackground} alt={fragrance.name} width={1000} height={1000} />
                         <div className="relative">
-                            <Image className="w-full h-full" src={fragrance.product} alt={fragrance.name} width={3000} height={3000} />
+                            <Image className="w-full h-full" src={fragrance.cardImage} alt={fragrance.name} width={3000} height={3000} />
                             <div className="absolute z-10 top-[10px] left-[10px] flex flex-col items-start gap-[6px]">
                                 {fragrance.bestSeller && (
                                     <div className="px-[12px] py-[5px] bg-[#6b5c2ecc] rounded-full">
@@ -93,12 +73,12 @@ const FragrancesSection = () => {
                                 </div>
                             </div>
                             <div>
-                                <h6 className="text-[18px] max-xl:text-[15px] font-manropeRegular text-white font-normal text-right">2500 PKR</h6>
-                                <h6 className="text-[15px] max-xl:text-[13px] font-manropeRegular text-[#c7c7c7] font-normal text-right"><s>3000 PKR</s></h6>
+                                <h6 className="text-[18px] max-xl:text-[15px] font-manropeRegular text-white font-normal text-right">{fragrance.price} PKR</h6>
+                                <h6 className="text-[15px] max-xl:text-[13px] font-manropeRegular text-[#c7c7c7] font-normal text-right"><s>{fragrance.compareAtPrice} PKR</s></h6>
                             </div>
                         </div>
                         <div>
-                            <button className="w-full hero-order-btn hero-fade-btn cursor-pointer bg-[#fff] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-xl:px-[12px] max-xl:py-[8px] max-lg:px-[10px] max-lg:py-[7px] font-manropeRegular text-[18px] max-xl:text-[14px] max-lg:text-[13px] font-medium">Order Now</button>
+                            <Link href="/products" className=" block w-full text-center hero-order-btn hero-fade-btn cursor-pointer bg-[#fff] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-xl:px-[12px] max-xl:py-[8px] max-lg:px-[10px] max-lg:py-[7px] font-manropeRegular text-[18px] max-xl:text-[14px] max-lg:text-[13px] font-medium">Order Now</Link>
                         </div>
                     </div>
                     </div>

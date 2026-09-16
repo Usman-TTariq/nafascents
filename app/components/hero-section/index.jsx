@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const slides = [
@@ -231,7 +232,7 @@ const HeroSection = () => {
                 <div className="hero-copy-row flex items-start justify-between w-full max-lg:pt-[20px]">
                     <div className="relative z-40">
                         <h6 className="hero-fade-copy text-[20px] max-lg:text-[15px] font-manropeRegular text-white max-w-[280px] max-lg:max-w-[190px]">{activeSlide.description}</h6>
-                        <button className="hero-order-btn hero-fade-btn mt-[20px] max-lg:mt-[12px] cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-lg:px-[16px] max-lg:py-[8px] font-manropeRegular text-[18px] max-lg:text-[15px] font-medium">Order Now</button>
+                        <Link href="/products" className="hero-order-btn hero-fade-btn mt-[20px] max-lg:mt-[12px] inline-block cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-lg:px-[16px] max-lg:py-[8px] font-manropeRegular text-[18px] max-lg:text-[15px] font-medium">Order Now</Link>
                     </div>
                     <div className="hero-fade-tester">
                         <Image src={activeSlide.tester} className="w-[150px] max-lg:w-[88px]" alt={`${activeSlide.testerName} Tester`} width={1000} height={1000} />

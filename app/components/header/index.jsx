@@ -1,8 +1,8 @@
 import Logo from "./svg/logo";
-import Cart from "./svg/cart";
 import Profile from "./svg/profile";
 import Search from "./svg/search";
 import Link from "next/link";
+import CartButton from "./cart-button";
 
 const Header = () => {
     return (
@@ -21,10 +21,7 @@ const Header = () => {
                     <div className="flex items-center justify-center px-[10px] py-[7px] bg-[#ffffff4a] rounded-full cursor-pointer">
                         <Profile className="w-[16px]" />
                     </div>
-                    <div className="flex items-center gap-[8px] px-[22px] py-[7px] max-lg:px-[10px] bg-[#ffffff4a] rounded-full cursor-pointer">
-                        <Cart className="w-[15px]" />
-                        <h6 className="text-[16px] font-medium font-manropeRegular text-white max-lg:hidden">Cart</h6>
-                    </div>
+                    <CartButton />
                 </div>
             </div>
         </div>

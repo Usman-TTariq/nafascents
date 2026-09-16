@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const BestSellerSection = () => {
     return (
@@ -15,7 +16,7 @@ const BestSellerSection = () => {
                         <h2 className="text-white max-lg:text-center text-[60px] font-light leading-[70px] max-2xl:text-[50px] max-xl:text-[34px] max-xl:leading-[50px] max-lg:leading-[40px]">Meet <span className="text-[75px] max-xl:text-[50px] max-lg:text-[34px] italic font-timesNewRoman">Flow Wanted</span> <br className="max-lg:hidden"/> Our Signature Scent</h2>
                         <h6 className="text-[18px] max-lg:text-[15px] font-manropeRegular text-white font-light py-[12px] max-lg:py-[8px] max-lg:text-center">A bold blend created for those who leave a lasting impression. Flow Wanted balances depth, warmth, and confidence in a scent designed to feel distinctive from the first spray to the final note.</h6>
                         <div className="max-lg:text-center">
-                            <button className="hero-order-btn hero-fade-btn mt-[10px] cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black border-2 border-white rounded-full px-[20px] py-[10px] font-manropeRegular text-[18px] max-lg:text-[16px] font-medium">Order Now</button>
+                            <Link href="/products" className="hero-order-btn hero-fade-btn mt-[10px] inline-block cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black border-2 border-white rounded-full px-[20px] py-[10px] font-manropeRegular text-[18px] max-lg:text-[16px] font-medium">Order Now</Link>
                         </div>
                     </div>
                 </div>
