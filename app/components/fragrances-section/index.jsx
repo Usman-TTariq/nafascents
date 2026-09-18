@@ -63,22 +63,22 @@ const FragrancesSection = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-start justify-between relative z-10 py-[10px]">
-                            <div>
-                                <h6 className="text-[22px] max-2xl:text-[18px] max-xl:text-[16px] font-manropeRegular text-white font-normal">{fragrance.name}</h6>
+                        <div className="flex items-start justify-between gap-[8px] relative z-10 py-[10px]">
+                            <div className="min-w-0">
+                                <h6 className="text-[22px] 2xl:text-[22px] max-2xl:text-[16px] max-xl:text-[16px] font-manropeRegular text-white font-normal whitespace-nowrap">{fragrance.name}</h6>
                                 <div className="flex items-center gap-[4px]">
                                     <Star className="w-[12px]" />
                                     <h6 className="text-[14px] font-manropeRegular text-white font-normal">4.8</h6>
                                     <h6 className="text-[14px] font-manropeRegular text-[#c7c7c7] font-normal">(10)</h6>
                                 </div>
                             </div>
-                            <div>
-                                <h6 className="text-[18px] max-xl:text-[15px] font-manropeRegular text-white font-normal text-right">{fragrance.price} PKR</h6>
-                                <h6 className="text-[15px] max-xl:text-[13px] font-manropeRegular text-[#c7c7c7] font-normal text-right"><s>{fragrance.compareAtPrice} PKR</s></h6>
+                            <div className="shrink-0">
+                                <h6 className="text-[18px] max-2xl:text-[15px] max-xl:text-[15px] font-manropeRegular text-white font-normal text-right whitespace-nowrap">{fragrance.price} PKR</h6>
+                                <h6 className="text-[15px] max-2xl:text-[13px] max-xl:text-[13px] font-manropeRegular text-[#c7c7c7] font-normal text-right whitespace-nowrap"><s>{fragrance.compareAtPrice} PKR</s></h6>
                             </div>
                         </div>
                         <div>
-                            <Link href="/products" className=" block w-full text-center hero-order-btn hero-fade-btn cursor-pointer bg-[#fff] text-black border-2 border-white rounded-full px-[20px] py-[10px] max-xl:px-[12px] max-xl:py-[8px] max-lg:px-[10px] max-lg:py-[7px] font-manropeRegular text-[18px] max-xl:text-[14px] max-lg:text-[13px] font-medium">Order Now</Link>
+                            <Link href={`/product/${fragrance.slug}`} className=" block w-full text-center hero-order-btn hero-fade-btn cursor-pointer bg-[#fff] text-black border-2 border-white rounded-full px-[20px] py-[6px] max-xl:px-[12px] max-xl:py-[8px] max-lg:px-[10px] max-lg:py-[7px] font-manropeRegular text-[18px] max-xl:text-[14px] max-lg:text-[13px] font-medium">Order Now</Link>
                         </div>
                     </div>
                     </div>

@@ -7,7 +7,7 @@ import { useCart } from "../../context/cart-context";
 const formatPrice = (value) => Number(value).toLocaleString("en-US");
 
 const CartSidebar = () => {
-    const { items, isOpen, subtotal, removeFromCart, closeCart } = useCart();
+    const { items, isOpen, subtotal, removeFromCart, updateQuantity, closeCart } = useCart();
 
     useEffect(() => {
         if (!isOpen) return;
@@ -78,16 +78,7 @@ const CartSidebar = () => {
                                 key={item.slug}
                                 className="flex items-start gap-[14px] py-[18px] border-b border-[#ececec] last:border-b-0"
                             >
-                                <button
-                                    type="button"
-                                    onClick={() => removeFromCart(item.slug)}
-                                    className="mt-[4px] w-[22px] h-[22px] rounded-full border border-[#ddd] text-[#999] text-[14px] leading-none cursor-pointer shrink-0"
-                                    aria-label={`Remove ${item.name} from cart`}
-                                >
-                                    ×
-                                </button>
-
-                                <div className="w-[72px] h-[72px] rounded-[8px] overflow-hidden bg-[#f5f5f5] shrink-0">
+                                <div className="w-[72px] h-[72px] rounded-[10px] overflow-hidden bg-[#f5f5f5] shrink-0 border border-[#eee]">
                                     <Image
                                         src={item.image}
                                         alt={item.name}
@@ -97,14 +88,77 @@ const CartSidebar = () => {
                                     />
                                 </div>
 
-                                <div className="flex-1 min-w-0">
+                                <div className="flex-1 min-w-0 pt-[2px]">
                                     <h6 className="text-[11px] font-manropeRegular text-[#999] uppercase tracking-wide">
                                         NAFA Scents
                                     </h6>
-                                    <h6 className="text-[15px] font-manropeRegular text-black font-medium pt-[2px] truncate">
-                                        {item.quantity} x {item.name}
+                                    <h6 className="text-[16px] font-manropeRegular text-black font-medium pt-[4px] leading-[1.3]">
+                                        {item.name}
                                     </h6>
-                                    <h6 className="text-[15px] font-manropeRegular text-[#111] font-medium pt-[6px]">
+
+                                    <div className="flex items-center justify-between gap-[12px] mt-[10px]">
+                                        <div className="inline-flex items-center gap-[14px] px-[14px] py-[5px] rounded-full border border-[#ddd] bg-[#fafafa]">
+                                            <button
+                                                type="button"
+                                                className="text-[#111] text-[18px] leading-none cursor-pointer w-[20px] h-[20px] flex items-center justify-center hover:text-[#666] transition-colors"
+                                                onClick={() => updateQuantity(item.slug, item.quantity - 1)}
+                                                aria-label={`Decrease ${item.name} quantity`}
+                                            >
+                                                −
+                                            </button>
+                                            <span className="text-[14px] font-manropeRegular text-[#111] min-w-[18px] text-center font-medium">
+                                                {item.quantity}
+                                            </span>
+                                            <button
+                                                type="button"
+                                                className="text-[#111] text-[18px] leading-none cursor-pointer w-[20px] h-[20px] flex items-center justify-center hover:text-[#666] transition-colors"
+                                                onClick={() => updateQuantity(item.slug, item.quantity + 1)}
+                                                aria-label={`Increase ${item.name} quantity`}
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+
+                                        <button
+                                            type="button"
+                                            onClick={() => removeFromCart(item.slug)}
+                                            className="shrink-0 flex items-center justify-center w-[34px] h-[34px] rounded-full bg-[#dc2626] hover:bg-[#b91c1c] text-white cursor-pointer transition-colors shadow-sm"
+                                            aria-label={`Delete ${item.name} from cart`}
+                                        >
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+                                                <path
+                                                    d="M3 6H5H21"
+                                                    stroke="white"
+                                                    strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                                <path
+                                                    d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z"
+                                                    stroke="white"
+                                                    strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                                <path
+                                                    d="M10 11V17"
+                                                    stroke="white"
+                                                    strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                                <path
+                                                    d="M14 11V17"
+                                                    stroke="white"
+                                                    strokeWidth="1.5"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <h6 className="text-[15px] font-manropeRegular text-[#111] font-semibold pt-[10px]">
                                         {formatPrice(item.price * item.quantity)} PKR
                                     </h6>
                                 </div>
