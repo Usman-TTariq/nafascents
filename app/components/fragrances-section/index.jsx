@@ -86,6 +86,7 @@ const FragrancesSection = () => {
                         </div>
                         <div>
                             <Link href={`/product/${fragrance.slug}`} className=" block w-full text-center hero-order-btn hero-fade-btn cursor-pointer bg-[#fff] text-black border-2 border-white rounded-full px-[20px] py-[6px] max-xl:px-[12px] max-xl:py-[8px] max-lg:px-[10px] max-lg:py-[7px] font-manropeRegular text-[18px] max-xl:text-[14px] max-lg:text-[13px] font-medium">Order Now</Link>
+                            <Link href={`/product/${fragrance.slug}`} className=" block w-full text-center hero-order-btn hero-fade-btn cursor-pointer bg-[#fff] text-black border-2 border-white rounded-full px-[20px] py-[6px] max-xl:px-[12px] max-xl:py-[8px] max-lg:px-[10px] max-lg:py-[7px] font-manropeRegular text-[18px] max-xl:text-[14px] max-lg:text-[13px] font-medium">Order Now</Link>
                         </div>
                     </div>
                     </div>
