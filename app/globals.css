@@ -310,7 +310,7 @@ body {
   --fragrance-shift: 14px;
   --fragrance-far-shift: 8px;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   align-items: center;
 }
 

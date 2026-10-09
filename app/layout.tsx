@@ -33,7 +33,7 @@ const timesNewRoman = localFont({
 export const metadata: Metadata = {
   title: "NAFA Scents | Luxury Perfumes Crafted to Last",
   description:
-    "Discover NAFA Scents luxury fragrances — Flow Wanted, Sirr Al Oud, Velvet Rose, Alpha Male and The Gentlemen. Long-lasting perfumes crafted for everyday wear.",
+    "Discover NAFA Scents luxury fragrances — Flow Wanted, Sirr Al Oud, Velvet Rose, Alpha Male, The Gentlemen and Obsession. Long-lasting perfumes crafted for everyday wear.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

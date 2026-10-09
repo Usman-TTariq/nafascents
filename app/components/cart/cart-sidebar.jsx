@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useCart } from "../../context/cart-context";
 
 const formatPrice = (value) => Number(value).toLocaleString("en-US");
 
 const CartSidebar = () => {
+    const router = useRouter();
     const { items, isOpen, subtotal, removeFromCart, updateQuantity, closeCart } = useCart();
 
     useEffect(() => {
@@ -179,7 +181,12 @@ const CartSidebar = () => {
 
                     <button
                         type="button"
-                        className="w-full cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black rounded-full px-[20px] py-[14px] font-manropeRegular text-[16px] font-semibold"
+                        disabled={items.length === 0}
+                        onClick={() => {
+                            closeCart();
+                            router.push("/checkout");
+                        }}
+                        className="w-full cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black rounded-full px-[20px] py-[14px] font-manropeRegular text-[16px] font-semibold"
                     >
                         Proceed to Checkout
                     </button>

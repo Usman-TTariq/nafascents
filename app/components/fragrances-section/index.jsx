@@ -12,6 +12,7 @@ const fragrances = [
     products.find((p) => p.slug === "alpha-male"),
     products.find((p) => p.slug === "flow-wanted"),
     products.find((p) => p.slug === "the-gentlemen"),
+    products.find((p) => p.slug === "obsession"),
 ];
 
 const cardTransform = (index, hovered) => {
@@ -63,18 +64,24 @@ const FragrancesSection = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-start justify-between gap-[8px] relative z-10 py-[10px]">
-                            <div className="min-w-0">
-                                <h6 className="text-[22px] 2xl:text-[22px] max-2xl:text-[16px] max-xl:text-[16px] font-manropeRegular text-white font-normal whitespace-nowrap">{fragrance.name}</h6>
-                                <div className="flex items-center gap-[4px]">
-                                    <Star className="w-[12px]" />
-                                    <h6 className="text-[14px] font-manropeRegular text-white font-normal">4.8</h6>
-                                    <h6 className="text-[14px] font-manropeRegular text-[#c7c7c7] font-normal">(10)</h6>
+                        <div className="flex items-start justify-between gap-[10px] max-xl:gap-[6px] relative z-10 py-[10px]">
+                            <div className="min-w-0 flex-1 pr-[4px]">
+                                <h6 className="text-[18px] max-2xl:text-[15px] max-xl:text-[14px] font-manropeRegular text-white font-normal leading-[1.2] break-words">
+                                    {fragrance.name}
+                                </h6>
+                                <div className="flex items-center gap-[4px] pt-[2px]">
+                                    <Star className="w-[12px] shrink-0" />
+                                    <h6 className="text-[13px] max-xl:text-[12px] font-manropeRegular text-white font-normal">4.8</h6>
+                                    <h6 className="text-[13px] max-xl:text-[12px] font-manropeRegular text-[#c7c7c7] font-normal">(10)</h6>
                                 </div>
                             </div>
-                            <div className="shrink-0">
-                                <h6 className="text-[18px] max-2xl:text-[15px] max-xl:text-[15px] font-manropeRegular text-white font-normal text-right whitespace-nowrap">{fragrance.price} PKR</h6>
-                                <h6 className="text-[15px] max-2xl:text-[13px] max-xl:text-[13px] font-manropeRegular text-[#c7c7c7] font-normal text-right whitespace-nowrap"><s>{fragrance.compareAtPrice} PKR</s></h6>
+                            <div className="shrink-0 text-right">
+                                <h6 className="text-[16px] max-2xl:text-[14px] max-xl:text-[13px] font-manropeRegular text-white font-normal whitespace-nowrap">
+                                    {fragrance.price} PKR
+                                </h6>
+                                <h6 className="text-[13px] max-2xl:text-[12px] max-xl:text-[11px] font-manropeRegular text-[#c7c7c7] font-normal whitespace-nowrap">
+                                    <s>{fragrance.compareAtPrice} PKR</s>
+                                </h6>
                             </div>
                         </div>
                         <div>

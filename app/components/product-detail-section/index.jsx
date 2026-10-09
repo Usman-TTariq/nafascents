@@ -100,22 +100,27 @@ const ProductDetailSection = ({ product }) => {
         setReviewRating(1);
     }, [product.slug, product.mainImage]);
 
-    const isMainImage = activeImage === product.mainImage;
     const totalPrice = formatPrice(parsePrice(product.price) * quantity);
     const totalCompareAtPrice = formatPrice(parsePrice(product.compareAtPrice) * quantity);
+
+    const thumbnailImages = [
+        product.mainImage,
+        ...product.gallery.filter((src) => src !== product.mainImage),
+    ];
 
     return (
         <div className="bg-black pt-[100px] max-lg:pt-[80px] pb-[80px] max-lg:pb-[40px]">
             <div className="container">
                 <div className="grid grid-cols-12 gap-[40px] max-xl:gap-[28px] max-lg:gap-[24px]">
                     <div className="col-span-6 max-lg:col-span-12">
-                        <div className={`relative rounded-[24px] max-lg:rounded-[16px] overflow-hidden ${isMainImage ? "bg-[#111]" : "bg-white"}`}>
+                        <div className="relative rounded-[24px] max-lg:rounded-[16px] overflow-hidden bg-black">
                             <Image
-                                className={`w-full aspect-square ${isMainImage ? "object-cover" : "object-contain"}`}
+                                className="w-full aspect-square object-cover"
                                 src={activeImage}
                                 alt={product.name}
                                 width={1200}
                                 height={1200}
+                                priority
                             />
                             <div className="absolute top-[14px] left-[14px] max-lg:top-[10px] max-lg:left-[10px] z-10">
                                 <Image
@@ -125,25 +130,26 @@ const ProductDetailSection = ({ product }) => {
                                     width={228}
                                     height={261}
                                 />
-                                <h6 className={`text-[14px] max-lg:text-[9px] font-manropeRegular text-center pt-[4px] drop-shadow ${isMainImage ? "text-white" : "text-black font-semibold"}`}>
+                                <h6 className="text-[14px] max-lg:text-[9px] font-manropeRegular text-center pt-[4px] drop-shadow text-white">
                                     Free Tester <br /> {product.testerName}
                                 </h6>
                             </div>
-                            <div className="absolute top-[14px] right-[14px] max-lg:top-[10px] max-lg:right-[10px] z-10 flex flex-col gap-[8px] max-lg:gap-[6px]">
-                                {product.gallery.map((image) => (
+                            <div className="absolute top-[14px] right-[14px] max-lg:top-[10px] max-lg:right-[10px] z-10 flex flex-col gap-[12px] max-lg:gap-[8px]">
+                                {thumbnailImages.map((image, index) => (
                                     <button
                                         key={image}
                                         type="button"
                                         onClick={() => setActiveImage(image)}
-                                        className={`w-[55px] max-lg:w-[40px] aspect-square rounded-[8px] overflow-hidden bg-white cursor-pointer border ${activeImage === image ? "border-[#F5BF56]" : "border-transparent"
-                                            }`}
+                                        className={`relative shrink-0 w-[80px] h-[80px] max-lg:w-[52px] max-lg:h-[52px] rounded-[16px] max-lg:rounded-[12px] overflow-hidden bg-black cursor-pointer border-2 ${
+                                            activeImage === image ? "border-[#F5BF56]" : "border-white"
+                                        }`}
                                     >
                                         <Image
-                                            className="w-full h-full object-contain"
+                                            className="object-cover"
                                             src={image}
-                                            alt={`${product.name} gallery`}
-                                            width={846}
-                                            height={1059}
+                                            alt={`${product.name} gallery ${index + 1}`}
+                                            fill
+                                            sizes="(max-width: 1024px) 52px, 80px"
                                         />
                                     </button>
                                 ))}

@@ -25,18 +25,24 @@ const ProductPageListSection = () => {
                         </div>
                         <div className="relative z-10 py-[10px]">
                             <h6 className="lg:hidden text-[14px] max-sm:text-center font-manropeRegular text-white font-normal leading-[1.35]">{product.name}</h6>
-                            <div className="flex items-start justify-between gap-[8px] max-lg:pt-[6px]">
-                                <div className="min-w-0">
-                                    <h6 className="hidden lg:block text-[22px] 2xl:text-[22px] max-2xl:text-[16px] max-xl:text-[16px] font-manropeRegular text-white font-normal whitespace-nowrap">{product.name}</h6>
-                                    <div className="flex items-center gap-[4px]">
-                                        <Star className="w-[12px]" />
-                                        <h6 className="text-[14px] max-lg:text-[12px] font-manropeRegular text-white font-normal">4.8</h6>
-                                        <h6 className="text-[14px] max-lg:text-[12px] font-manropeRegular text-[#c7c7c7] font-normal">(10)</h6>
+                            <div className="flex items-start justify-between gap-[10px] max-xl:gap-[6px] max-lg:pt-[6px]">
+                                <div className="min-w-0 flex-1 pr-[4px]">
+                                    <h6 className="hidden lg:block text-[18px] max-2xl:text-[15px] max-xl:text-[14px] font-manropeRegular text-white font-normal leading-[1.2] break-words">
+                                        {product.name}
+                                    </h6>
+                                    <div className="flex items-center gap-[4px] pt-[2px]">
+                                        <Star className="w-[12px] shrink-0" />
+                                        <h6 className="text-[13px] max-lg:text-[12px] font-manropeRegular text-white font-normal">4.8</h6>
+                                        <h6 className="text-[13px] max-lg:text-[12px] font-manropeRegular text-[#c7c7c7] font-normal">(10)</h6>
                                     </div>
                                 </div>
                                 <div className="shrink-0 text-right">
-                                    <h6 className="text-[18px] max-2xl:text-[15px] max-xl:text-[15px] max-lg:text-[14px] font-manropeRegular text-white font-normal whitespace-nowrap">{product.price} PKR</h6>
-                                    <h6 className="text-[15px] max-2xl:text-[13px] max-xl:text-[13px] max-lg:text-[12px] font-manropeRegular text-[#c7c7c7] font-normal whitespace-nowrap"><s>{product.compareAtPrice} PKR</s></h6>
+                                    <h6 className="text-[16px] max-2xl:text-[14px] max-xl:text-[13px] max-lg:text-[14px] font-manropeRegular text-white font-normal whitespace-nowrap">
+                                        {product.price} PKR
+                                    </h6>
+                                    <h6 className="text-[13px] max-2xl:text-[12px] max-xl:text-[11px] max-lg:text-[12px] font-manropeRegular text-[#c7c7c7] font-normal whitespace-nowrap">
+                                        <s>{product.compareAtPrice} PKR</s>
+                                    </h6>
                                 </div>
                             </div>
                         </div>

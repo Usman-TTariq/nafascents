@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useMemo, useState } from "react";
 import CartSidebar from "../components/cart/cart-sidebar";
 
 const CartContext = createContext(null);
@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
     const [items, setItems] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
 
-    const addToCart = (product, quantity = 1) => {
+    const addToCart = useCallback((product, quantity = 1) => {
         setItems((prev) => {
             const existing = prev.find((item) => item.slug === product.slug);
 
@@ -34,25 +34,30 @@ export const CartProvider = ({ children }) => {
                 },
             ];
         });
-    };
+    }, []);
 
-    const removeFromCart = (slug) => {
+    const removeFromCart = useCallback((slug) => {
         setItems((prev) => prev.filter((item) => item.slug !== slug));
-    };
+    }, []);
 
-    const updateQuantity = (slug, quantity) => {
+    const updateQuantity = useCallback((slug, quantity) => {
         if (quantity < 1) {
-            removeFromCart(slug);
+            setItems((prev) => prev.filter((item) => item.slug !== slug));
             return;
         }
 
         setItems((prev) =>
             prev.map((item) => (item.slug === slug ? { ...item, quantity } : item))
         );
-    };
+    }, []);
 
-    const openCart = () => setIsOpen(true);
-    const closeCart = () => setIsOpen(false);
+    const openCart = useCallback(() => setIsOpen(true), []);
+    const closeCart = useCallback(() => setIsOpen(false), []);
+
+    const clearCart = useCallback(() => {
+        setItems((prev) => (prev.length === 0 ? prev : []));
+        setIsOpen(false);
+    }, []);
 
     const totalItems = useMemo(
         () => items.reduce((sum, item) => sum + item.quantity, 0),
@@ -75,8 +80,9 @@ export const CartProvider = ({ children }) => {
             updateQuantity,
             openCart,
             closeCart,
+            clearCart,
         }),
-        [items, isOpen, totalItems, subtotal]
+        [items, isOpen, totalItems, subtotal, addToCart, removeFromCart, updateQuantity, openCart, closeCart, clearCart]
     );
 
     return (
