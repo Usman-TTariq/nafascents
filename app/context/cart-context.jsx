@@ -59,6 +59,19 @@ export const CartProvider = ({ children }) => {
         setIsOpen(false);
     }, []);
 
+    const buyNow = useCallback((product, quantity = 1) => {
+        setItems([
+            {
+                slug: product.slug,
+                name: product.name,
+                image: product.mainImage,
+                price: parsePrice(product.price),
+                quantity,
+            },
+        ]);
+        setIsOpen(false);
+    }, []);
+
     const totalItems = useMemo(
         () => items.reduce((sum, item) => sum + item.quantity, 0),
         [items]
@@ -81,8 +94,9 @@ export const CartProvider = ({ children }) => {
             openCart,
             closeCart,
             clearCart,
+            buyNow,
         }),
-        [items, isOpen, totalItems, subtotal, addToCart, removeFromCart, updateQuantity, openCart, closeCart, clearCart]
+        [items, isOpen, totalItems, subtotal, addToCart, removeFromCart, updateQuantity, openCart, closeCart, clearCart, buyNow]
     );
 
     return (
