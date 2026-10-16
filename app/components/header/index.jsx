@@ -14,7 +14,7 @@ const Header = () => {
                 <div className="flex items-center gap-[30px] max-lg:hidden">
                     <Link href="/" className="text-[16px] font-manropeRegular text-white cursor-pointer">Home</Link>
                     <Link href="/products" className="text-[16px] font-manropeRegular text-white cursor-pointer">Products</Link>
-                    <h6 className="text-[16px] font-manropeRegular text-white cursor-pointer">Contact</h6>
+                    <Link href="/contact" className="text-[16px] font-manropeRegular text-white cursor-pointer">Contact</Link>
                 </div>
                 <div className="flex items-center gap-[10px] max-lg:gap-[6px] shrink-0">
                     <SearchBar />

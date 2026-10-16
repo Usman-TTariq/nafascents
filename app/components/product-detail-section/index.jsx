@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Star from "../fragrances-section/svg/star";
 import { useCart } from "../../context/cart-context";
@@ -75,11 +76,13 @@ const formatPrice = (value) =>
     Number(value).toLocaleString("en-US");
 
 const ProductDetailSection = ({ product }) => {
-    const { addToCart } = useCart();
+    const router = useRouter();
+    const { addToCart, buyNow } = useCart();
     const { showToast } = useToast();
     const [activeImage, setActiveImage] = useState(product.mainImage);
     const [quantity, setQuantity] = useState(1);
     const [reviewRating, setReviewRating] = useState(1);
+    const [goToCheckout, setGoToCheckout] = useState(false);
 
     const handleAddToCart = () => {
         addToCart(
@@ -93,6 +96,24 @@ const ProductDetailSection = ({ product }) => {
         );
         showToast("Product added to cart");
     };
+
+    const handleBuyNow = () => {
+        buyNow(
+            {
+                slug: product.slug,
+                name: product.name,
+                mainImage: product.mainImage,
+                price: product.price,
+            },
+            quantity
+        );
+        setGoToCheckout(true);
+    };
+
+    useEffect(() => {
+        if (!goToCheckout) return;
+        router.push("/checkout");
+    }, [goToCheckout, router]);
 
     useEffect(() => {
         setActiveImage(product.mainImage);
@@ -246,7 +267,8 @@ const ProductDetailSection = ({ product }) => {
                             </button>
                             <button
                                 type="button"
-                                className="flex-1 cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black rounded-full px-[20px] py-[12px] max-lg:py-[10px] font-manropeRegular text-[16px] max-lg:text-[14px] font-medium"
+                                onClick={handleBuyNow}
+                                className="flex-1 cursor-pointer bg-gradient-to-b from-[#FCE481] to-[#F5BF56] text-black border-2 border-white rounded-full px-[20px] py-[12px] max-lg:py-[10px] font-manropeRegular text-[16px] max-lg:text-[14px] font-medium"
                             >
                                 Buy Now
                             </button>

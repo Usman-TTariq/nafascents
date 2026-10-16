@@ -13,7 +13,7 @@ const Footer = () => {
                             <Link href="/products" className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Products</Link>
                             <h6 className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Profile</h6>
                             <h6 className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Cart</h6>
-                            <h6 className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Contact</h6>
+                            <Link href="/contact" className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Contact</Link>
                             <h6 className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Terms & Conditions</h6>
                             <h6 className="text-[16px] max-lg:text-[14px] font-manropeRegular text-white font-light">Privacy Policy</h6>
                         </div>
